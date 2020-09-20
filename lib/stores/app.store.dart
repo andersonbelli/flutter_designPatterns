@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
 
-// Para gerar o esse arquivo, executar no cmd:
+//  Para gerar o esse arquivo, executar no cmd:
 //  flutter packages pub run build_runner clean
 //  flutter packages pub run build_runner build
 part 'app.store.g.dart';
@@ -17,19 +17,14 @@ abstract class _AppStore with Store{
   @observable
   String picture = "https://placehold.it/200";
 
-  @observable
-  String token = "";
-
   @action
   void setUser(
     String pName,
     String pEmail,
-    String pPicture,
-    String pToken,
+    String pPicture
   ) {
     name = pName;
     email = pEmail;
     picture = pPicture;
-    token = pToken;
   }
 }

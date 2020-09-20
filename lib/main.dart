@@ -1,3 +1,5 @@
+import 'package:designpatterns/views/drawer.view.dart';
+import 'package:designpatterns/views/home.view.dart';
 import 'package:designpatterns/views/signup.view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +15,12 @@ class MyApp extends StatelessWidget {
       providers: [Provider<AppStore>.value(value: AppStore())],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SignupView(),
+        themeMode: ThemeMode.dark,
+        darkTheme:
+            ThemeData(brightness: Brightness.dark, primaryColor: Colors.blue),
+        theme:
+            ThemeData(brightness: Brightness.dark, primaryColor: Colors.blue),
+        home: HomeView(),
       ),
     );
   }

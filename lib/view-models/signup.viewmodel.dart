@@ -1,4 +1,4 @@
-class SignupViewModel {
+class SignUpViewModel {
   String name = "";
   String email = "";
   String password = "";

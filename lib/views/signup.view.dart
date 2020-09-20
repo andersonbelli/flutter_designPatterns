@@ -5,16 +5,28 @@ import 'package:designpatterns/views/home.view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SignupView extends StatefulWidget {
-  @override
-  _SignupViewState createState() => _SignupViewState();
+class EmailFieldValidator {
+  static String validate(String value) {
+    return value.isEmpty ? 'Email não pode ficar vazio!' : null;
+  }
 }
 
-class _SignupViewState extends State<SignupView> {
-  final _formKey = GlobalKey<FormState>();
-  final _controller = new SignupController();
+class PasswordFieldValidator {
+  static String validate(String value) {
+    return value.isEmpty ? 'Password can\'t be empty!' : null;
+  }
+}
 
-  var model = new SignupViewModel();
+class SignUpView extends StatefulWidget {
+  @override
+  _SignUpViewState createState() => _SignUpViewState();
+}
+
+class _SignUpViewState extends State<SignUpView> {
+  final _formKey = GlobalKey<FormState>();
+  final _controller = new SignUpController();
+
+  var model = new SignUpViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +40,11 @@ class _SignupViewState extends State<SignupView> {
           key: _formKey,
           child: Column(
             children: <Widget>[
-              Text("Cadastre-se"),
+              Text("Register"),
               TextFormField(
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                  labelText: "Nome",
+                  labelText: "Name",
                   labelStyle: TextStyle(
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.w400,
@@ -40,7 +52,7 @@ class _SignupViewState extends State<SignupView> {
                 ),
                 validator: (value) {
                   if (value.isEmpty) {
-                    return 'Insira seu nome';
+                    return 'Insert your name';
                   }
                   return null;
                 },
@@ -57,34 +69,34 @@ class _SignupViewState extends State<SignupView> {
                       fontWeight: FontWeight.w400,
                       fontSize: 16),
                 ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Insira seu email';
-                  }
-                  return null;
-                },
+                validator: EmailFieldValidator.validate,
                 onSaved: (val) {
                   model.email = val;
                 },
               ),
               TextFormField(
                 keyboardType: TextInputType.text,
+                obscureText: true,
                 decoration: InputDecoration(
-                  labelText: "Senha",
+                  labelText: "Password",
                   labelStyle: TextStyle(
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.w400,
                       fontSize: 16),
                 ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Insira uma senha';
-                  }
-                  return null;
-                },
+                validator: PasswordFieldValidator.validate,
                 onSaved: (val) {
                   model.password = val;
                 },
+              ),
+              Container(width: double.maxFinite, child: Text("Choose an icon")),
+              ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Ink.image(image: AssetImage("https://picsum.photos/200/200")),
+                  Ink.image(image: AssetImage("https://picsum.photos/200/200")),
+                  Ink.image(image: AssetImage("https://picsum.photos/200/200"))
+                ],
               ),
               SizedBox(
                 height: 20,
@@ -108,11 +120,10 @@ class _SignupViewState extends State<SignupView> {
                         setState(() {});
 
                         _controller.create(model).then((data) {
-                          print(data.token);
                           setState(() {});
 
-                          store.setUser(
-                              data.name, data.email, data.picture, data.token);
+//                          store.setUser(
+//                              data.name, data.email, data.picture, data.token);
 
                           Navigator.push(
                               context,

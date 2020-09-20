@@ -1,4 +1,5 @@
 import 'package:designpatterns/stores/app.store.dart';
+import 'package:designpatterns/views/drawer.view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,7 +9,13 @@ class HomeView extends StatelessWidget {
     var store = Provider.of<AppStore>(context);
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          "Contacts list",
+          textAlign: TextAlign.center,
+        ),
+      ),
+      drawer: Drawer(child: DrawerContent()),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
