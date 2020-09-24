@@ -15,7 +15,7 @@ abstract class _AppStore with Store{
   String email = "";
 
   @observable
-  String picture = "https://placehold.it/200";
+  String iconOption = "https://placehold.it/200";
 
   @action
   void setUser(
@@ -25,6 +25,6 @@ abstract class _AppStore with Store{
   ) {
     name = pName;
     email = pEmail;
-    picture = pPicture;
+    iconOption = pPicture;
   }
 }

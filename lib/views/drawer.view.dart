@@ -5,10 +5,10 @@ import 'package:provider/provider.dart';
 
 class DrawerContent extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     var store = Provider.of<AppStore>(context);
 
-    print("Name: " + store.name.runtimeType.toString());
+    print("NameStore: " + store.name);
 
     return ListView(
       children: [
@@ -35,10 +35,11 @@ class DrawerContent extends StatelessWidget {
           ),
         ),
         ListTile(
-          title: Text("Settings"),
-          trailing: Icon(Icons.settings),
+          title: Text("Add new Contact"),
+          trailing: Icon(Icons.add),
           onTap: () {
-            print("Settings click");
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => SignUpView()));
           },
         )
       ],
