@@ -1,16 +1,19 @@
 # designpatterns
 
-Flutter, MobX, MVC e MVVM
+### Flutter, MobX, MVC e MVVM
 
-## Getting Started
+#### App being developed to study and test the possibilities of Flutter
 
-This project is a starting point for a Flutter application.
+## Main functions working
 
-A few resources to get you started if this is your first Flutter project:
+- Register new contact;
+  - Select contact icon
+- Save contacts and show then at home screen;
+- After register first contact, it became main user;
+- Register new contact through drawer menu;
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## TODO
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Details of contacts;
+- "Login" using registred password;
+- Update layout;
